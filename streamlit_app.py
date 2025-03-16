@@ -7,22 +7,12 @@ from snowflake.snowpark.functions import col
 st.title(":cup_with_straw: Customize Your Smoothie! :cup_with_straw:")
 st.write("Choose the fruits you want in your custom Smoothie!")
 
-# option = st.selectbox(
-#     "What is your favorite fruit?",
-#     ("Banana", "Strawberries", "Peaches"),
-#     index=None,
-#     placeholder="Select your favorite fruit...",
-# )
-
-# st.write("Your favorite fruit is:", option)
-
 name_on_order = st.text_input('Name on Smoothie:')
 st.write('The name on your Smoothie will be:',name_on_order)
 
-#session = get_active_session()
 
 cnx = st.connection("snowflake")
-sesson = cnx.session()
+session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
 #st.dataframe(data=my_dataframe, use_container_width=True)
 
